@@ -16,13 +16,15 @@ API docs: https://docs.tavily.com/
 
 import os
 import logging
+import time
 from typing import Dict, List, Optional
 from dotenv import load_dotenv
+from config import ENRICHMENT_SLEEP_SECONDS
 
 # Load environment variables
 load_dotenv()
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('Enricher')
 
 
 class TavilyEnricher:
@@ -92,13 +94,50 @@ class TavilyEnricher:
                 job['enriched'] = True
                 job['enrichment_source'] = 'tavily'
                 
+                # Re-extract skills from full description
+                if job.get('full_description'):
+                    from serper_api import extract_skills
+                    new_skills = extract_skills(job['full_description'])
+                    existing = set(job.get('skills', []))
+                    job['skills'] = list(existing.union(set(new_skills)))
+                
                 logger.debug(f"Successfully enriched job: {job['title']}")
+            
+            # Rate limiting
+            time.sleep(ENRICHMENT_SLEEP_SECONDS)
             
             return job
             
         except Exception as e:
-            logger.warning(f"Tavily enrichment failed for {job.get('link')}: {e}")
+            logger.warning(f"Tavily failed for {job['link']}: {e}")
             return job
+
+    def _select_jobs_to_enrich(self, jobs: List[Dict], max_jobs: int) -> List[Dict]:
+        """
+        Prioritise jobs for enrichment by:
+        1. Jobs with company = 'Unknown' (most likely to be landing pages — skip these)
+        2. Jobs with 0 skills detected (most room to gain)
+        3. Jobs from linkedin.com/jobs/ (most likely to have full extractable descriptions)
+        4. Jobs from naukri.com/job-listings (second best)
+        5. Everything else
+        """
+        # Skip landing pages — they won't enrich well
+        candidates = [j for j in jobs if 'Unknown' not in j.get('company', 'Unknown')]
+        
+        # If not enough known-company jobs, add Unknown ones too
+        if len(candidates) < max_jobs:
+            candidates = jobs.copy()
+        
+        # Sort: zero skills first, then by domain quality
+        def priority(job):
+            has_skills = len(job.get('skills', [])) > 0
+            is_linkedin = 'linkedin.com/jobs/view' in job.get('link', '')
+            is_naukri = 'naukri.com/job-listings' in job.get('link', '')
+            # Lower number = higher priority
+            return (has_skills, not is_linkedin, not is_naukri)
+        
+        candidates.sort(key=priority)
+        return candidates[:max_jobs]
     
     def enrich_jobs_batch(self, jobs: List[Dict], max_jobs: int = 10) -> List[Dict]:
         """
@@ -115,19 +154,22 @@ class TavilyEnricher:
             logger.info("Tavily enrichment skipped (disabled)")
             return jobs
         
-        logger.info(f"Enriching up to {max_jobs} jobs with Tavily...")
+        logger.info(f"Starting Tavily enrichment. is_enabled={self.is_enabled()}, max_jobs={max_jobs}, total_jobs={len(jobs)}")
+        
+        jobs_to_enrich = self._select_jobs_to_enrich(jobs, max_jobs)
+        logger.info(f"Enriching up to {len(jobs_to_enrich)} prioritized jobs with Tavily...")
         
         enriched_count = 0
-        for i, job in enumerate(jobs):
-            if enriched_count >= max_jobs:
-                logger.info(f"Reached enrichment limit ({max_jobs} jobs)")
-                break
-            
+        for i, job in enumerate(jobs_to_enrich):
             job = self.enrich_job(job)
             if job.get('enriched'):
                 enriched_count += 1
+            
+            # Progress logging
+            if (i + 1) % 10 == 0 or (i + 1) == len(jobs_to_enrich):
+                logger.info(f"Tavily enrichment: {i + 1}/{len(jobs_to_enrich)} jobs processed")
         
-        logger.info(f"Enriched {enriched_count} jobs with Tavily")
+        logger.info(f"Enrichment complete. Credits used this run: ~{enriched_count}")
         return jobs
     
     def research_company(self, company_name: str) -> Optional[Dict]:
@@ -264,6 +306,21 @@ class TavilyEnricher:
         except Exception as e:
             logger.error(f"GitHub project search failed: {e}")
             return []
+
+    def get_job_intelligence(self, job: Dict) -> Dict:
+        """
+        Phase 2 method: Gathers deep intelligence for a job.
+        """
+        if not self.enabled or job.get('company', 'Unknown') == 'Unknown':
+            return {}
+        
+        try:
+            logger.info("Phase 2 method get_job_intelligence() ready — not yet called in pipeline")
+            result = self.research_company(job['company'])
+            return {'company_intel': result}
+        except Exception as e:
+            logger.warning(f"Failed to get job intelligence: {e}")
+            return {}
 
 
 def test_tavily_enricher():

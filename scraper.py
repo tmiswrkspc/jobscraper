@@ -22,15 +22,19 @@ from pathlib import Path
 from serper_api import SerperAPI
 from deduplicator import deduplicate_jobs
 from tavily_enricher import TavilyEnricher
-from config import SEARCH_QUERIES, OUTPUT_DIR, ENABLE_ENRICHMENT, MAX_ENRICHMENT_JOBS
+from tavily_enricher import TavilyEnricher
+from config import (
+    SEARCH_QUERIES, OUTPUT_DIR, ENABLE_ENRICHMENT, 
+    MAX_ENRICHMENT_JOBS, RESULTS_PER_QUERY, DEFAULT_LOCATION
+)
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='[%(asctime)s] [%(levelname)s] [Scraper] %(message)s',
+    format='[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('Scraper')
 
 
 class SerperJobScraper:
@@ -38,7 +42,7 @@ class SerperJobScraper:
     Job scraper using Serper API for fast, CAPTCHA-free data collection.
     """
     
-    def __init__(self, location: str = "Bangalore, India"):
+    def __init__(self, location: str = DEFAULT_LOCATION):
         """
         Initialize scraper.
         
@@ -221,6 +225,33 @@ class SerperJobScraper:
         with_salary = sum(1 for job in jobs if job.get('salary'))
         logger.info(f"Jobs with salary info: {with_salary}")
         
+        # New stats: skills and enrichment
+        unknown_count = sum(1 for j in jobs if j.get('company', '').strip().lower() in ['unknown', '', 'none'])
+        known_count = len(jobs) - unknown_count
+        logger.info(f"Company identified: {known_count} ({known_count/len(jobs)*100:.1f}%)")
+        logger.info(f"Company = Unknown: {unknown_count} ({unknown_count/len(jobs)*100:.1f}%)")
+
+        enriched_jobs = [j for j in jobs if j.get('enriched')]
+        snippet_jobs = [j for j in jobs if not j.get('enriched')]
+        
+        enriched_count = len(enriched_jobs)
+        logger.info(f"Jobs enriched by Tavily: {enriched_count}")
+        
+        enriched_with_skills = sum(1 for j in enriched_jobs if j.get('skills'))
+        snippet_with_skills = sum(1 for j in snippet_jobs if j.get('skills'))
+        
+        if enriched_jobs:
+            logger.info(f"Tavily-enriched skill detection: {enriched_with_skills}/{len(enriched_jobs)} ({enriched_with_skills/len(enriched_jobs)*100:.1f}%)")
+        if snippet_jobs:
+            logger.info(f"Snippet-only skill detection:    {snippet_with_skills}/{len(snippet_jobs)} ({snippet_with_skills/len(snippet_jobs)*100:.1f}%)")
+        
+        # New stats: Category breakdown
+        logger.info(f"\nCategory breakdown:")
+        categorized = self.categorize_jobs(jobs)
+        for cat, cat_jobs in categorized.items():
+            if cat_jobs:
+                logger.info(f"  - {cat}: {len(cat_jobs)}")
+        
         # Show sample jobs
         logger.info("\nSample jobs (first 5):")
         for i, job in enumerate(jobs[:5], 1):
@@ -250,14 +281,21 @@ class SerperJobScraper:
         Returns:
             Dictionary mapping category names to lists of jobs
         """
-        # Define category keywords
         CATEGORY_KEYWORDS = {
             'backend': ['backend', 'back-end', 'django', 'flask', 'spring', 'api', 'server'],
             'frontend': ['frontend', 'front-end', 'react', 'angular', 'vue', 'css', 'ui'],
             'fullstack': ['full stack', 'fullstack', 'full-stack'],
-            'data': ['data scientist', 'data analyst', 'ml', 'machine learning', 'ai'],
-            'devops': ['devops', 'sre', 'infrastructure', 'kubernetes', 'docker'],
-            'mobile': ['mobile', 'android', 'ios', 'flutter', 'react native']
+            'ai_ml': ['machine learning engineer', 'ml engineer', 'ai engineer', 
+                     'artificial intelligence', 'nlp engineer', 'computer vision',
+                     'llm', 'generative ai', 'mlops', 'langchain'],
+            'data': ['data scientist', 'data analyst'],
+            'cloud': ['cloud engineer', 'cloud architect', 'platform engineer',
+                     'site reliability', 'infrastructure engineer', 'cloud native'],
+            'devops': ['devops', 'sre', 'infrastructure'],
+            'mobile': ['mobile', 'android', 'ios', 'flutter developer', 
+                      'react native', 'swift', 'kotlin', 'mobile engineer'],
+            'qa': ['qa engineer', 'quality assurance', 'test engineer', 'sdet',
+                  'automation testing', 'selenium', 'cypress']
         }
 
         # Initialize result dictionary with all categories
@@ -265,9 +303,12 @@ class SerperJobScraper:
             'backend': [],
             'frontend': [],
             'fullstack': [],
+            'ai_ml': [],
             'data': [],
+            'cloud': [],
             'devops': [],
             'mobile': [],
+            'qa': [],
             'other': []
         }
 
@@ -283,21 +324,29 @@ class SerperJobScraper:
             if any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['fullstack']):
                 categorized['fullstack'].append(job)
                 categorized_flag = True
-            # Then check other categories
+            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['ai_ml']):
+                categorized['ai_ml'].append(job)
+                categorized_flag = True
+            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['cloud']):
+                categorized['cloud'].append(job)
+                categorized_flag = True
+            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['data']):
+                categorized['data'].append(job)
+                categorized_flag = True
+            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['mobile']):
+                categorized['mobile'].append(job)
+                categorized_flag = True
+            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['qa']):
+                categorized['qa'].append(job)
+                categorized_flag = True
             elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['backend']):
                 categorized['backend'].append(job)
                 categorized_flag = True
             elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['frontend']):
                 categorized['frontend'].append(job)
                 categorized_flag = True
-            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['data']):
-                categorized['data'].append(job)
-                categorized_flag = True
             elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['devops']):
                 categorized['devops'].append(job)
-                categorized_flag = True
-            elif any(keyword in combined_text for keyword in CATEGORY_KEYWORDS['mobile']):
-                categorized['mobile'].append(job)
                 categorized_flag = True
 
             # If no match, assign to 'other'
@@ -313,12 +362,12 @@ def main():
     Main entry point for Serper-based scraper.
     """
     # Initialize scraper
-    scraper = SerperJobScraper(location="Bangalore, India")
+    scraper = SerperJobScraper(location=DEFAULT_LOCATION)
     
     # Scrape all queries
     jobs = scraper.scrape_all_queries(
         queries=SEARCH_QUERIES,
-        results_per_query=20  # 20 results per query
+        results_per_query=RESULTS_PER_QUERY
     )
     
     # Export results

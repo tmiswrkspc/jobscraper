@@ -79,10 +79,10 @@ def test_integration_full_pipeline():
     # Test 2: Categorize jobs
     categories = scraper.categorize_jobs(jobs)
     
-    # Verify all 7 categories exist
-    expected_categories = {'backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile', 'other'}
+    # Verify all 10 categories exist
+    expected_categories = {'backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa', 'other'}
     assert set(categories.keys()) == expected_categories, "Not all categories present"
-    print("✓ All 7 categories present")
+    print("✓ All 10 categories present")
     
     # Verify no jobs lost
     total_categorized = sum(len(cat_jobs) for cat_jobs in categories.values())
@@ -151,8 +151,8 @@ def test_integration_empty_job_list():
     # Categorize empty list
     categories = scraper.categorize_jobs(jobs)
     
-    # Verify all 7 categories exist but are empty
-    expected_categories = {'backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile', 'other'}
+    # Verify all 10 categories exist but are empty
+    expected_categories = {'backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa', 'other'}
     assert set(categories.keys()) == expected_categories, "Not all categories present"
     assert all(len(cat_jobs) == 0 for cat_jobs in categories.values()), "Categories should be empty"
     print("✓ Empty job list handled correctly - all categories empty")

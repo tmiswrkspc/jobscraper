@@ -55,8 +55,22 @@ SEARCH_QUERIES = [
     
     # Specific domains (2 queries)
     "fintech developer Bangalore",
-    "ecommerce developer Bangalore"
+    "ecommerce developer Bangalore",
+
+    # Mobile roles (5 queries)
+    "android developer Bangalore",
+    "ios developer Bangalore",
+    "flutter developer Bangalore",
+    "react native developer Bangalore",
+    "mobile developer Bangalore"
 ]
+
+# ============================================================================
+# SEARCH CONFIGURATION
+# ============================================================================
+RESULTS_PER_QUERY = 20
+DEFAULT_LOCATION = "Bangalore, India"
+SEARCH_FRESHNESS = "qdr:w"
 
 # ============================================================================
 # DEDUPLICATION CONFIGURATION
@@ -73,10 +87,6 @@ FUZZY_SIMILARITY_THRESHOLD = 0.9  # 90% similarity required
 # Output directory
 OUTPUT_DIR = "output"
 
-# Output file base names (timestamps will be added)
-JSON_OUTPUT_BASENAME = "jobs"
-CSV_OUTPUT_BASENAME = "jobs"
-
 # ============================================================================
 # ENRICHMENT CONFIGURATION (Optional - Tavily API)
 # ============================================================================
@@ -85,4 +95,8 @@ CSV_OUTPUT_BASENAME = "jobs"
 ENABLE_ENRICHMENT = True
 
 # Maximum jobs to enrich per run (to stay within API limits)
-MAX_ENRICHMENT_JOBS = 10  # Tavily free tier: 1,000 requests/month
+MAX_ENRICHMENT_JOBS = 200  # Tavily budget: 1,000 requests/month
+
+# Enrichment safety
+ENRICHMENT_SLEEP_SECONDS = 0.3
+TAVILY_MONTHLY_BUDGET = 1000

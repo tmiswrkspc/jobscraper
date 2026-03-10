@@ -23,10 +23,10 @@ from config import FUZZY_SIMILARITY_THRESHOLD
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='[%(asctime)s] [%(levelname)s] [Deduplicator] %(message)s',
+    format='[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('Deduplicator')
 
 
 def normalize_url(url: str) -> str:

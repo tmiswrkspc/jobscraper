@@ -10,7 +10,7 @@ Test Coverage:
 - Case-insensitive categorization
 - Keyword in title vs description vs both
 - Fullstack priority (should match before backend/frontend)
-- categorize_jobs returns all 7 categories
+- categorize_jobs returns all 10 categories
 - Empty job list edge case
 - Jobs with missing title or description fields
 """
@@ -141,6 +141,36 @@ def test_categorization_each_category():
             'description': 'iOS and Flutter development',
             'skills': []
         }, 'mobile', 'iOS/Flutter in title and description'),
+        
+        # AI/ML category
+        ({
+            'title': 'Machine Learning Engineer',
+            'company': 'AI Labs',
+            'location': 'Bangalore, India',
+            'link': 'https://example.com/job/13',
+            'description': 'Building LLM applications with LangChain',
+            'skills': []
+        }, 'ai_ml', 'ML/LLM/LangChain in title/description'),
+        
+        # Cloud category
+        ({
+            'title': 'Cloud Architect',
+            'company': 'Cloud Pro',
+            'location': 'Hyderabad, India',
+            'link': 'https://example.com/job/14',
+            'description': 'AWS and GCP infrastructure management',
+            'skills': []
+        }, 'cloud', 'Cloud/Infrastructure in title/description'),
+        
+        # QA category
+        ({
+            'title': 'QA Automation Engineer',
+            'company': 'Test Soft',
+            'location': 'Pune, India',
+            'link': 'https://example.com/job/15',
+            'description': 'Selenium and Cypress testing',
+            'skills': []
+        }, 'qa', 'QA/Testing in title/description'),
     ]
     
     passed = 0
@@ -211,7 +241,7 @@ def test_categorization_other_category():
         print(f"✓ All {len(test_jobs)} jobs correctly assigned to 'other' category")
         
         # Verify no jobs in specific categories
-        specific_categories = ['backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile']
+        specific_categories = ['backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa']
         all_empty = all(len(result[cat]) == 0 for cat in specific_categories)
         
         if all_empty:
@@ -440,17 +470,17 @@ def test_categorization_returns_all_categories():
     scraper = SerperJobScraper()
     
     print(f"{'='*70}")
-    print("Unit Test: Returns All 7 Categories")
+    print("Unit Test: Returns All 10 Categories")
     print(f"{'='*70}")
     
     # Test with empty list
     result_empty = scraper.categorize_jobs([])
     
-    expected_categories = {'backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile', 'other'}
+    expected_categories = {'backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa', 'other'}
     actual_categories = set(result_empty.keys())
     
     if actual_categories == expected_categories:
-        print(f"✓ Empty job list: All 7 categories present")
+        print(f"✓ Empty job list: All 10 categories present")
     else:
         missing = expected_categories - actual_categories
         extra = actual_categories - expected_categories
@@ -473,7 +503,7 @@ def test_categorization_returns_all_categories():
     actual_categories_non_empty = set(result_non_empty.keys())
     
     if actual_categories_non_empty == expected_categories:
-        print(f"✓ Non-empty job list: All 7 categories present")
+        print(f"✓ Non-empty job list: All 10 categories present")
         print("✓ All categories returned test passed\n")
     else:
         missing = expected_categories - actual_categories_non_empty
@@ -492,8 +522,8 @@ def test_categorization_empty_job_list():
     
     result = scraper.categorize_jobs([])
     
-    # Should return all 7 categories with empty lists
-    expected_categories = ['backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile', 'other']
+    # Should return all 10 categories with empty lists
+    expected_categories = ['backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa', 'other']
     
     passed = True
     for category in expected_categories:
@@ -505,7 +535,7 @@ def test_categorization_empty_job_list():
             passed = False
     
     if passed:
-        print(f"✓ Empty job list returns all 7 categories with empty lists")
+        print(f"✓ Empty job list returns all 10 categories with empty lists")
         print("✓ Empty job list test passed\n")
     else:
         assert False, "Empty job list test failed"

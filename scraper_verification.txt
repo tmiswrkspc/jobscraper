@@ -1,0 +1,415 @@
+[2026-03-10 13:50:29] [INFO] [Enricher] Tavily enrichment enabled
+[2026-03-10 13:50:29] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:50:29] [INFO] [Scraper] MULTI-SITE JOB SCRAPER - SERPER API
+[2026-03-10 13:50:29] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:50:29] [INFO] [Scraper] Location: Bangalore, India
+[2026-03-10 13:50:29] [INFO] [Scraper] Queries: 35
+[2026-03-10 13:50:29] [INFO] [Scraper] Results per query: 20
+[2026-03-10 13:50:29] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:50:29] [INFO] [Scraper] 
+[2026-03-10 13:50:29] [INFO] [Scraper] 
+Query 1/35: 'software engineer Bangalore'
+[2026-03-10 13:50:29] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:29] [INFO] [serper_api] [Serper Jobs] Searching: 'software engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:30] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:30] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:30] [INFO] [serper_api] [Serper Search] Searching: 'software engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:31] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:31] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:31] [INFO] [Scraper] 
+Query 2/35: 'python developer Bangalore'
+[2026-03-10 13:50:31] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:31] [INFO] [serper_api] [Serper Jobs] Searching: 'python developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:32] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:32] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:32] [INFO] [serper_api] [Serper Search] Searching: 'python developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:33] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:33] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:33] [INFO] [Scraper] 
+Query 3/35: 'data analyst Bangalore'
+[2026-03-10 13:50:33] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:33] [INFO] [serper_api] [Serper Jobs] Searching: 'data analyst Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:35] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:35] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:35] [INFO] [serper_api] [Serper Search] Searching: 'data analyst Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:36] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:36] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:36] [INFO] [Scraper] 
+Query 4/35: 'frontend developer Bangalore'
+[2026-03-10 13:50:36] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:36] [INFO] [serper_api] [Serper Jobs] Searching: 'frontend developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:36] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:36] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:36] [INFO] [serper_api] [Serper Search] Searching: 'frontend developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:38] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:38] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:38] [INFO] [Scraper] 
+Query 5/35: 'java developer Bangalore'
+[2026-03-10 13:50:38] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:38] [INFO] [serper_api] [Serper Jobs] Searching: 'java developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:38] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:38] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:38] [INFO] [serper_api] [Serper Search] Searching: 'java developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:40] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:40] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:40] [INFO] [Scraper] 
+Query 6/35: 'full stack developer Bangalore'
+[2026-03-10 13:50:40] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:40] [INFO] [serper_api] [Serper Jobs] Searching: 'full stack developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:41] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:41] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:41] [INFO] [serper_api] [Serper Search] Searching: 'full stack developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:43] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:43] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:43] [INFO] [Scraper] 
+Query 7/35: 'data scientist Bangalore'
+[2026-03-10 13:50:43] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:43] [INFO] [serper_api] [Serper Jobs] Searching: 'data scientist Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:43] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:43] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:43] [INFO] [serper_api] [Serper Search] Searching: 'data scientist Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:45] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:45] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:45] [INFO] [Scraper] 
+Query 8/35: 'devops engineer Bangalore'
+[2026-03-10 13:50:45] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:45] [INFO] [serper_api] [Serper Jobs] Searching: 'devops engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:46] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:46] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:46] [INFO] [serper_api] [Serper Search] Searching: 'devops engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:46] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:46] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:46] [INFO] [Scraper] 
+Query 9/35: 'backend developer Bangalore'
+[2026-03-10 13:50:46] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:46] [INFO] [serper_api] [Serper Jobs] Searching: 'backend developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:47] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:47] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:47] [INFO] [serper_api] [Serper Search] Searching: 'backend developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:49] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:49] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:49] [INFO] [Scraper] 
+Query 10/35: 'machine learning engineer Bangalore'
+[2026-03-10 13:50:49] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:49] [INFO] [serper_api] [Serper Jobs] Searching: 'machine learning engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:49] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:49] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:49] [INFO] [serper_api] [Serper Search] Searching: 'machine learning engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:51] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:51] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:51] [INFO] [Scraper] 
+Query 11/35: 'django developer Bangalore'
+[2026-03-10 13:50:51] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:51] [INFO] [serper_api] [Serper Jobs] Searching: 'django developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:51] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:51] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:51] [INFO] [serper_api] [Serper Search] Searching: 'django developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:53] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:53] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:53] [INFO] [Scraper] 
+Query 12/35: 'react developer Bangalore'
+[2026-03-10 13:50:53] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:53] [INFO] [serper_api] [Serper Jobs] Searching: 'react developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:53] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:53] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:53] [INFO] [serper_api] [Serper Search] Searching: 'react developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:55] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:55] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:55] [INFO] [Scraper] 
+Query 13/35: 'nodejs developer Bangalore'
+[2026-03-10 13:50:55] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:55] [INFO] [serper_api] [Serper Jobs] Searching: 'nodejs developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:56] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:56] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:56] [INFO] [serper_api] [Serper Search] Searching: 'nodejs developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:57] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:57] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:57] [INFO] [Scraper] 
+Query 14/35: 'aws engineer Bangalore'
+[2026-03-10 13:50:57] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:57] [INFO] [serper_api] [Serper Jobs] Searching: 'aws engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:57] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:57] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:57] [INFO] [serper_api] [Serper Search] Searching: 'aws engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:50:59] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:50:59] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:50:59] [INFO] [Scraper] 
+Query 15/35: 'kubernetes engineer Bangalore'
+[2026-03-10 13:50:59] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:50:59] [INFO] [serper_api] [Serper Jobs] Searching: 'kubernetes engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:50:59] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:50:59] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:50:59] [INFO] [serper_api] [Serper Search] Searching: 'kubernetes engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:00] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:00] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:00] [INFO] [Scraper] 
+Query 16/35: 'remote software engineer India'
+[2026-03-10 13:51:00] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:00] [INFO] [serper_api] [Serper Jobs] Searching: 'remote software engineer India' in 'Bangalore, India'
+[2026-03-10 13:51:01] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:01] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:01] [INFO] [serper_api] [Serper Search] Searching: 'remote software engineer India site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:02] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:02] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:02] [INFO] [Scraper] 
+Query 17/35: 'remote python developer India'
+[2026-03-10 13:51:02] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:02] [INFO] [serper_api] [Serper Jobs] Searching: 'remote python developer India' in 'Bangalore, India'
+[2026-03-10 13:51:02] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:02] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:02] [INFO] [serper_api] [Serper Search] Searching: 'remote python developer India site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:04] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:04] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:04] [INFO] [Scraper] 
+Query 18/35: 'remote full stack developer India'
+[2026-03-10 13:51:04] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:04] [INFO] [serper_api] [Serper Jobs] Searching: 'remote full stack developer India' in 'Bangalore, India'
+[2026-03-10 13:51:04] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:04] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:04] [INFO] [serper_api] [Serper Search] Searching: 'remote full stack developer India site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:05] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:05] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:05] [INFO] [Scraper] 
+Query 19/35: 'work from home developer India'
+[2026-03-10 13:51:05] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:05] [INFO] [serper_api] [Serper Jobs] Searching: 'work from home developer India' in 'Bangalore, India'
+[2026-03-10 13:51:05] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:05] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:05] [INFO] [serper_api] [Serper Search] Searching: 'work from home developer India site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:08] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:08] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:08] [INFO] [Scraper] 
+Query 20/35: 'remote backend engineer India'
+[2026-03-10 13:51:08] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:08] [INFO] [serper_api] [Serper Jobs] Searching: 'remote backend engineer India' in 'Bangalore, India'
+[2026-03-10 13:51:08] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:08] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:08] [INFO] [serper_api] [Serper Search] Searching: 'remote backend engineer India site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:10] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:10] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:10] [INFO] [Scraper] 
+Query 21/35: 'software engineer Mumbai'
+[2026-03-10 13:51:10] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:10] [INFO] [serper_api] [Serper Jobs] Searching: 'software engineer Mumbai' in 'Bangalore, India'
+[2026-03-10 13:51:10] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:10] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:10] [INFO] [serper_api] [Serper Search] Searching: 'software engineer Mumbai site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:12] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:12] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:12] [INFO] [Scraper] 
+Query 22/35: 'python developer Pune'
+[2026-03-10 13:51:12] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:12] [INFO] [serper_api] [Serper Jobs] Searching: 'python developer Pune' in 'Bangalore, India'
+[2026-03-10 13:51:12] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:12] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:12] [INFO] [serper_api] [Serper Search] Searching: 'python developer Pune site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:14] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:14] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:14] [INFO] [Scraper] 
+Query 23/35: 'full stack developer Hyderabad'
+[2026-03-10 13:51:14] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:14] [INFO] [serper_api] [Serper Jobs] Searching: 'full stack developer Hyderabad' in 'Bangalore, India'
+[2026-03-10 13:51:14] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:14] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:14] [INFO] [serper_api] [Serper Search] Searching: 'full stack developer Hyderabad site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:16] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:16] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:16] [INFO] [Scraper] 
+Query 24/35: 'data scientist Delhi'
+[2026-03-10 13:51:16] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:16] [INFO] [serper_api] [Serper Jobs] Searching: 'data scientist Delhi' in 'Bangalore, India'
+[2026-03-10 13:51:18] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:18] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:18] [INFO] [serper_api] [Serper Search] Searching: 'data scientist Delhi site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:19] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:19] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:19] [INFO] [Scraper] 
+Query 25/35: 'devops engineer Mumbai'
+[2026-03-10 13:51:19] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:19] [INFO] [serper_api] [Serper Jobs] Searching: 'devops engineer Mumbai' in 'Bangalore, India'
+[2026-03-10 13:51:20] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:20] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:20] [INFO] [serper_api] [Serper Search] Searching: 'devops engineer Mumbai site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:21] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:21] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:21] [INFO] [Scraper] 
+Query 26/35: 'junior developer Bangalore'
+[2026-03-10 13:51:21] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:21] [INFO] [serper_api] [Serper Jobs] Searching: 'junior developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:21] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:21] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:21] [INFO] [serper_api] [Serper Search] Searching: 'junior developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:23] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:23] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:23] [INFO] [Scraper] 
+Query 27/35: 'senior software engineer Bangalore'
+[2026-03-10 13:51:23] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:23] [INFO] [serper_api] [Serper Jobs] Searching: 'senior software engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:23] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:23] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:23] [INFO] [serper_api] [Serper Search] Searching: 'senior software engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:25] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:25] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:25] [INFO] [Scraper] 
+Query 28/35: 'lead engineer Bangalore'
+[2026-03-10 13:51:25] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:25] [INFO] [serper_api] [Serper Jobs] Searching: 'lead engineer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:25] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:25] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:25] [INFO] [serper_api] [Serper Search] Searching: 'lead engineer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:27] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:27] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:27] [INFO] [Scraper] 
+Query 29/35: 'fintech developer Bangalore'
+[2026-03-10 13:51:27] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:27] [INFO] [serper_api] [Serper Jobs] Searching: 'fintech developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:27] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:27] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:27] [INFO] [serper_api] [Serper Search] Searching: 'fintech developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:28] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:28] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:28] [INFO] [Scraper] 
+Query 30/35: 'ecommerce developer Bangalore'
+[2026-03-10 13:51:28] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:28] [INFO] [serper_api] [Serper Jobs] Searching: 'ecommerce developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:28] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:28] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:28] [INFO] [serper_api] [Serper Search] Searching: 'ecommerce developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:30] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:30] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:30] [INFO] [Scraper] 
+Query 31/35: 'android developer Bangalore'
+[2026-03-10 13:51:30] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:30] [INFO] [serper_api] [Serper Jobs] Searching: 'android developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:30] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:30] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:30] [INFO] [serper_api] [Serper Search] Searching: 'android developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:31] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:31] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:31] [INFO] [Scraper] 
+Query 32/35: 'ios developer Bangalore'
+[2026-03-10 13:51:31] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:31] [INFO] [serper_api] [Serper Jobs] Searching: 'ios developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:31] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:31] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:31] [INFO] [serper_api] [Serper Search] Searching: 'ios developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:34] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:34] [INFO] [Scraper] 
+Query 33/35: 'flutter developer Bangalore'
+[2026-03-10 13:51:34] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper Jobs] Searching: 'flutter developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:34] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper Search] Searching: 'flutter developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:34] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:34] [INFO] [Scraper] 
+Query 34/35: 'react native developer Bangalore'
+[2026-03-10 13:51:34] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:34] [INFO] [serper_api] [Serper Jobs] Searching: 'react native developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:35] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:35] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:35] [INFO] [serper_api] [Serper Search] Searching: 'react native developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:36] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:36] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:36] [INFO] [Scraper] 
+Query 35/35: 'mobile developer Bangalore'
+[2026-03-10 13:51:36] [INFO] [Scraper] ----------------------------------------------------------------------
+[2026-03-10 13:51:36] [INFO] [serper_api] [Serper Jobs] Searching: 'mobile developer Bangalore' in 'Bangalore, India'
+[2026-03-10 13:51:36] [WARNING] [serper_api] [Serper Jobs] Request failed: 404 Client Error: Not Found for url: https://google.serper.dev/jobs
+[2026-03-10 13:51:36] [INFO] [serper_api] [Serper] Jobs endpoint returned no results, trying search endpoint
+[2026-03-10 13:51:36] [INFO] [serper_api] [Serper Search] Searching: 'mobile developer Bangalore site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com'
+[2026-03-10 13:51:38] [INFO] [serper_api] [Serper Search] Found 10 jobs
+[2026-03-10 13:51:38] [INFO] [Scraper] Collected 10 jobs
+[2026-03-10 13:51:38] [INFO] [Scraper] 
+======================================================================
+[2026-03-10 13:51:38] [INFO] [Scraper] DEDUPLICATION
+[2026-03-10 13:51:38] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:51:38] [INFO] [Deduplicator] Starting deduplication of 350 job records...
+[2026-03-10 13:51:38] [INFO] [Deduplicator] Phase 1 (URL): Removed 9 duplicates, 341 unique jobs remaining
+[2026-03-10 13:51:48] [INFO] [Deduplicator] Phase 2 (Fuzzy): Removed 29 duplicates, 312 unique jobs remaining
+[2026-03-10 13:51:48] [INFO] [Deduplicator] Deduplication complete: 350 → 312 (38 duplicates removed)
+[2026-03-10 13:51:48] [INFO] [Scraper] Initial jobs: 350
+[2026-03-10 13:51:48] [INFO] [Scraper] URL duplicates removed: 9
+[2026-03-10 13:51:48] [INFO] [Scraper] Fuzzy duplicates removed: 29
+[2026-03-10 13:51:48] [INFO] [Scraper] Unique jobs: 312
+[2026-03-10 13:51:48] [INFO] [Scraper] 
+======================================================================
+[2026-03-10 13:51:48] [INFO] [Scraper] ENRICHMENT (Tavily)
+[2026-03-10 13:51:48] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:51:48] [INFO] [Enricher] Starting Tavily enrichment. is_enabled=True, max_jobs=50, total_jobs=312
+[2026-03-10 13:51:48] [INFO] [Enricher] Enriching up to 50 jobs with Tavily...
+[2026-03-10 13:52:06] [INFO] [Enricher] Tavily enrichment: 10/50 jobs processed
+[2026-03-10 13:52:21] [INFO] [Enricher] Tavily enrichment: 20/50 jobs processed
+[2026-03-10 13:52:35] [INFO] [Enricher] Tavily enrichment: 30/50 jobs processed
+[2026-03-10 13:52:51] [INFO] [Enricher] Tavily enrichment: 40/50 jobs processed
+[2026-03-10 13:53:07] [INFO] [Enricher] Tavily enrichment: 50/50 jobs processed
+[2026-03-10 13:53:24] [INFO] [Enricher] Tavily enrichment: 60/50 jobs processed
+[2026-03-10 13:53:32] [INFO] [Enricher] Reached enrichment limit (50 jobs)
+[2026-03-10 13:53:32] [INFO] [Enricher] Enrichment complete. Credits used this run: ~50
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ JSON exported: output/serper_jobs_20260310_135332.json
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ CSV exported: output/serper_jobs_20260310_135332.csv
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Backend jobs exported: output/jobs_backend_20260310_135332.json (55 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Frontend jobs exported: output/jobs_frontend_20260310_135332.json (43 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Fullstack jobs exported: output/jobs_fullstack_20260310_135332.json (49 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Ai_ml jobs exported: output/jobs_ai_ml_20260310_135332.json (13 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Data jobs exported: output/jobs_data_20260310_135332.json (25 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Cloud jobs exported: output/jobs_cloud_20260310_135332.json (7 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Devops jobs exported: output/jobs_devops_20260310_135332.json (19 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Mobile jobs exported: output/jobs_mobile_20260310_135332.json (44 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Qa jobs exported: output/jobs_qa_20260310_135332.json (3 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] ✓ Other jobs exported: output/jobs_other_20260310_135332.json (54 jobs)
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+======================================================================
+[2026-03-10 13:53:32] [INFO] [Scraper] SUMMARY
+[2026-03-10 13:53:32] [INFO] [Scraper] ======================================================================
+[2026-03-10 13:53:32] [INFO] [Scraper] Total unique jobs: 312
+[2026-03-10 13:53:32] [INFO] [Scraper] Sources:
+[2026-03-10 13:53:32] [INFO] [Scraper]   - serper_search_api: 312
+[2026-03-10 13:53:32] [INFO] [Scraper] Jobs with salary info: 0
+[2026-03-10 13:53:32] [INFO] [Scraper] Jobs with skills detected: 224 (71.8%)
+[2026-03-10 13:53:32] [INFO] [Scraper] Jobs enriched by Tavily: 50
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+Category breakdown:
+[2026-03-10 13:53:32] [INFO] [Scraper]   - backend: 55
+[2026-03-10 13:53:32] [INFO] [Scraper]   - frontend: 43
+[2026-03-10 13:53:32] [INFO] [Scraper]   - fullstack: 49
+[2026-03-10 13:53:32] [INFO] [Scraper]   - ai_ml: 13
+[2026-03-10 13:53:32] [INFO] [Scraper]   - data: 25
+[2026-03-10 13:53:32] [INFO] [Scraper]   - cloud: 7
+[2026-03-10 13:53:32] [INFO] [Scraper]   - devops: 19
+[2026-03-10 13:53:32] [INFO] [Scraper]   - mobile: 44
+[2026-03-10 13:53:32] [INFO] [Scraper]   - qa: 3
+[2026-03-10 13:53:32] [INFO] [Scraper]   - other: 54
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+Sample jobs (first 5):
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+1. Software Engineer- 1–2 Years-MCA / BE Computer Science ...
+[2026-03-10 13:53:32] [INFO] [Scraper]    Company: Unknown
+[2026-03-10 13:53:32] [INFO] [Scraper]    Location: Bangalore, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Link: https://in.linkedin.com/jobs/view/software-engineer-1%E2%80%...
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+2. Software Engineer
+[2026-03-10 13:53:32] [INFO] [Scraper]    Company: LinkedIn
+[2026-03-10 13:53:32] [INFO] [Scraper]    Location: Bangalore, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Link: https://in.linkedin.com/jobs/view/software-engineer-at-supre...
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+3. Lead Software Engineer - .Net Developer
+[2026-03-10 13:53:32] [INFO] [Scraper]    Company: .Net Developer
+[2026-03-10 13:53:32] [INFO] [Scraper]    Location: Bangalore, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Link: https://au.linkedin.com/jobs/view/lead-software-engineer-net...
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+4. Custom Software Engineer - Accenture - 15 to 20 years of experience
+[2026-03-10 13:53:32] [INFO] [Scraper]    Company: 15 to 20 years of experience
+[2026-03-10 13:53:32] [INFO] [Scraper]    Location: Bangalore, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Link: https://www.naukri.com/job-listings-custom-software-engineer...
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+5. Arm hiring Senior Software Engineer in Bengaluru, Karnataka, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Company: Unknown
+[2026-03-10 13:53:32] [INFO] [Scraper]    Location: Bangalore, India
+[2026-03-10 13:53:32] [INFO] [Scraper]    Link: https://in.linkedin.com/jobs/view/senior-software-engineer-a...
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+======================================================================
+[2026-03-10 13:53:32] [INFO] [Scraper] 
+✓ Scraping complete!

@@ -102,7 +102,7 @@ def test_category_file_creation_for_non_empty_categories():
         f"Expected categories {expected_categories}, got {category_names}"
     
     # Verify categories without jobs don't have files
-    unexpected_categories = {'fullstack', 'data', 'mobile', 'other'}
+    unexpected_categories = {'fullstack', 'ai_ml', 'data', 'cloud', 'mobile', 'qa', 'other'}
     for f in category_files:
         parts = f.stem.split('_')
         if len(parts) >= 2:
@@ -190,7 +190,7 @@ def test_filename_pattern_matching():
         time_part = match.group(3)
         
         # Verify category name is valid
-        valid_categories = {'backend', 'frontend', 'fullstack', 'data', 'devops', 'mobile', 'other'}
+        valid_categories = {'backend', 'frontend', 'fullstack', 'ai_ml', 'data', 'cloud', 'devops', 'mobile', 'qa', 'other'}
         assert category_name in valid_categories, \
             f"Invalid category name '{category_name}' in filename"
         

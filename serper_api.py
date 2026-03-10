@@ -13,6 +13,7 @@ import logging
 import requests
 from typing import List, Dict, Optional
 from dotenv import load_dotenv
+from config import SEARCH_FRESHNESS
 
 # Load environment variables
 load_dotenv()
@@ -20,70 +21,116 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 
+# Skills detection patterns - maps canonical skill names to search patterns
+SKILLS_PATTERNS = {
+    'Python': ['python'],
+    'Java': ['java'],
+    'JavaScript': ['javascript', 'js'],
+    'TypeScript': ['typescript', 'ts'],
+    'Go': ['golang', ' go ', ' go,', ' go.', 'go ', ',go,', '.go.'],
+    'Rust': ['rust'],
+    'C++': ['c++', 'cpp'],
+    'C#': ['c#', 'csharp'],
+    'Ruby': ['ruby'],
+    'PHP': ['php'],
+    'Swift': ['swift'],
+    'Kotlin': ['kotlin'],
+    'Scala': ['scala'],
+    'React': ['react', 'reactjs', 'react.js'],
+    'Angular': ['angular'],
+    'Vue': ['vue', 'vuejs', 'vue.js'],
+    'Django': ['django'],
+    'Flask': ['flask'],
+    'Spring': ['spring boot', 'spring'],
+    'Node.js': ['node.js', 'nodejs', 'node js'],
+    'Express': ['express', 'expressjs'],
+    'FastAPI': ['fastapi'],
+    'PostgreSQL': ['postgresql', 'postgres'],
+    'MySQL': ['mysql'],
+    'MongoDB': ['mongodb', 'mongo'],
+    'Redis': ['redis'],
+    'Elasticsearch': ['elasticsearch', 'elastic search'],
+    'Cassandra': ['cassandra'],
+    'Oracle': ['oracle database', 'oracle db', 'oracle'],
+    'SQL Server': ['sql server', 'mssql'],
+    'Docker': ['docker'],
+    'Kubernetes': ['kubernetes', 'k8s'],
+    'AWS': ['aws', 'amazon web services'],
+    'Azure': ['azure', 'microsoft azure'],
+    'GCP': ['gcp', 'google cloud'],
+    'Terraform': ['terraform'],
+    'Git': [' git ', 'git,', 'git.', 'git '],
+    'CI/CD': ['ci/cd', 'ci cd', 'continuous integration', 'continuous deployment'],
+    'Jenkins': ['jenkins'],
+    'GitHub Actions': ['github actions'],
+    'GitLab CI': ['gitlab ci'],
+    'REST API': ['rest api', 'restful', ' rest '],
+    'GraphQL': ['graphql'],
+    'gRPC': ['grpc'],
+    'Microservices': ['microservices', 'micro services', 'micro-services'],
+    'Machine Learning': ['machine learning', ' ml ', 'ml,', 'ml.'],
+    'Deep Learning': ['deep learning'],
+    'TensorFlow': ['tensorflow'],
+    'PyTorch': ['pytorch'],
+    'Pandas': ['pandas'],
+    'NumPy': ['numpy'],
+    'Scikit-learn': ['scikit-learn', 'sklearn'],
+    'Kafka': ['kafka'],
+    'RabbitMQ': ['rabbitmq'],
+    'Linux': ['linux'],
+    'Bash': ['bash', 'shell scripting'],
+    
+    # AI/ML (hot in India 2025)
+    'LangChain': ['langchain'],
+    'LLM': ['llm', 'large language model', 'generative ai', 'gen ai', 'genai'],
+    'OpenAI API': ['openai', 'gpt-4', 'gpt4', 'chatgpt api'],
+    'HuggingFace': ['huggingface', 'hugging face'],
+    'RAG': ['rag', 'retrieval augmented', 'vector database', 'vector db', 'pinecone', 'weaviate'],
+    'MLOps': ['mlops', 'ml ops', 'model serving', 'model deployment'],
+
+    # Cloud & Infra
+    'Snowflake': ['snowflake'],
+    'Databricks': ['databricks'],
+    'Airflow': ['airflow', 'apache airflow'],
+    'Celery': ['celery'],
+    'ArgoCD': ['argocd', 'argo cd', 'gitops'],
+    'Ansible': ['ansible'],
+    'Prometheus': ['prometheus'],
+    'Grafana': ['grafana'],
+
+    # Web Frameworks
+    'Next.js': ['next.js', 'nextjs'],
+    'NestJS': ['nestjs', 'nest.js'],
+    'Spring Boot': ['spring boot', 'springboot'],
+    'WebSocket': ['websocket', 'socket.io'],
+
+    # Domain
+    'Agile': ['agile', 'scrum'],
+    'System Design': ['system design', 'distributed systems'],
+    'FinTech': ['fintech', 'payment gateway', 'upi integration'],
+}
+
+def extract_skills(text: str) -> List[str]:
+    """
+    Extract technical skills from job description text.
+    """
+    if not text:
+        return []
+
+    text_lower = text.lower()
+    detected_skills = []
+    for skill_name, patterns in SKILLS_PATTERNS.items():
+        for pattern in patterns:
+            if pattern.lower() in text_lower:
+                detected_skills.append(skill_name)
+                break
+    return detected_skills
+
+
 class SerperAPI:
     """
     Serper API client for job searches.
     """
-    
-    # Skills detection patterns - maps canonical skill names to search patterns
-    SKILLS_PATTERNS = {
-        'Python': ['python'],
-        'Java': ['java'],
-        'JavaScript': ['javascript', 'js'],
-        'TypeScript': ['typescript', 'ts'],
-        'Go': ['golang', ' go ', ' go,', ' go.', 'go ', ',go,', '.go.'],
-        'Rust': ['rust'],
-        'C++': ['c++', 'cpp'],
-        'C#': ['c#', 'csharp'],
-        'Ruby': ['ruby'],
-        'PHP': ['php'],
-        'Swift': ['swift'],
-        'Kotlin': ['kotlin'],
-        'Scala': ['scala'],
-        'React': ['react', 'reactjs', 'react.js'],
-        'Angular': ['angular'],
-        'Vue': ['vue', 'vuejs', 'vue.js'],
-        'Django': ['django'],
-        'Flask': ['flask'],
-        'Spring': ['spring boot', 'spring'],
-        'Node.js': ['node.js', 'nodejs', 'node js'],
-        'Express': ['express', 'expressjs'],
-        'FastAPI': ['fastapi'],
-        'PostgreSQL': ['postgresql', 'postgres'],
-        'MySQL': ['mysql'],
-        'MongoDB': ['mongodb', 'mongo'],
-        'Redis': ['redis'],
-        'Elasticsearch': ['elasticsearch', 'elastic search'],
-        'Cassandra': ['cassandra'],
-        'Oracle': ['oracle database', 'oracle db', 'oracle'],
-        'SQL Server': ['sql server', 'mssql'],
-        'Docker': ['docker'],
-        'Kubernetes': ['kubernetes', 'k8s'],
-        'AWS': ['aws', 'amazon web services'],
-        'Azure': ['azure', 'microsoft azure'],
-        'GCP': ['gcp', 'google cloud'],
-        'Terraform': ['terraform'],
-        'Git': [' git ', 'git,', 'git.', 'git '],
-        'CI/CD': ['ci/cd', 'ci cd', 'continuous integration', 'continuous deployment'],
-        'Jenkins': ['jenkins'],
-        'GitHub Actions': ['github actions'],
-        'GitLab CI': ['gitlab ci'],
-        'REST API': ['rest api', 'restful', ' rest '],
-        'GraphQL': ['graphql'],
-        'gRPC': ['grpc'],
-        'Microservices': ['microservices', 'micro services', 'micro-services'],
-        'Machine Learning': ['machine learning', ' ml ', 'ml,', 'ml.'],
-        'Deep Learning': ['deep learning'],
-        'TensorFlow': ['tensorflow'],
-        'PyTorch': ['pytorch'],
-        'Pandas': ['pandas'],
-        'NumPy': ['numpy'],
-        'Scikit-learn': ['scikit-learn', 'sklearn'],
-        'Kafka': ['kafka'],
-        'RabbitMQ': ['rabbitmq'],
-        'Linux': ['linux'],
-        'Bash': ['bash', 'shell scripting']
-    }
     
     def __init__(self, api_key: Optional[str] = None):
         """
@@ -192,13 +239,14 @@ class SerperAPI:
         """
         Search using regular search endpoint.
         """
-        search_query = f"{query} jobs in {location}"
+        search_query = f"{query} site:linkedin.com/jobs OR site:naukri.com/job-listings OR site:instahyre.com"
         
         payload = {
             "q": search_query,
             "gl": "in",
             "hl": "en",
-            "num": min(num_results, 100)
+            "num": min(num_results, 100),
+            "tbs": SEARCH_FRESHNESS
         }
         
         try:
@@ -240,7 +288,7 @@ class SerperAPI:
                     'posted_date': result.get('date'),
                     'description': result.get('description', ''),
                     'source': 'serper_jobs_api',
-                    'skills': self._extract_skills(result.get('description', ''))
+                    'skills': extract_skills(result.get('description', ''))
                 }
 
                 if job['title'] and job['company'] and job['link']:
@@ -277,7 +325,7 @@ class SerperAPI:
                 'posted_date': None,
                 'description': snippet,
                 'source': 'serper_search_api',
-                'skills': self._extract_skills(snippet)
+                'skills': extract_skills(snippet)
             }
 
             if job['title'] and job['company'] and job['link']:
@@ -338,38 +386,9 @@ class SerperAPI:
         return 'Unknown'
     def _extract_skills(self, text: str) -> List[str]:
         """
-        Extract technical skills from job description text.
-
-        Detects 40+ technical skills across categories:
-        - Programming languages (Python, Java, JavaScript, TypeScript, Go, Rust, C++, etc.)
-        - Frameworks (React, Angular, Vue, Django, Flask, Spring, Node.js, etc.)
-        - Databases (PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, etc.)
-        - DevOps tools (Docker, Kubernetes, AWS, Azure, GCP, Terraform, Git, CI/CD, Jenkins, GitHub Actions, etc.)
-        - API technologies (REST API, GraphQL, gRPC, Microservices)
-        - Data science tools (Machine Learning, TensorFlow, PyTorch, Pandas, NumPy, etc.)
-
-        Args:
-            text: Job description or snippet text
-
-        Returns:
-            List of detected skill strings (empty list if text is None/empty)
+        [DEPRECATED] Use module-level extract_skills instead.
         """
-        if not text:
-            return []
-
-        # Convert text to lowercase for case-insensitive matching
-        text_lower = text.lower()
-
-        # Detect skills by checking if any pattern matches
-        detected_skills = []
-        for skill_name, patterns in self.SKILLS_PATTERNS.items():
-            for pattern in patterns:
-                if pattern.lower() in text_lower:
-                    detected_skills.append(skill_name)
-                    break  # Found this skill, no need to check other patterns
-
-        # Return deduplicated list (though our logic already prevents duplicates)
-        return detected_skills
+        return extract_skills(text)
 
 
 def test_serper_api():

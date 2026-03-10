@@ -1,5 +1,27 @@
 # Changelog
 
+## Version 2.1.1 - Serper Optimization & Extraction Fixes (2026-03-10)
+
+### Improvements
+- **Serper Client Optimization**: Defaulted to regular search endpoint to eliminate 404 errors and reduce runtime.
+- **Company Extraction**: Improved logic for extracting company names from search snippets and titles.
+- **Added Skills Detection**: New module-level skill extraction using predefined patterns (80+ skills supported).
+
+### Bug Fixes
+- Fixed "Unknown" company entries in several edge cases.
+- Improved handling of LinkedIn and Naukri job title suffixes.
+
+## Version 2.1.0 - Tavily AI Enrichment (2026-03-09)
+
+### New Features
+- **Job Enrichment**: Added optional `TavilyEnricher` to fetch full job descriptions from URLs.
+- **Company Research**: Capability to research company culture and tech stack via Tavily.
+- **Skill Discovery**: Automatically discovers learning resources and GitHub projects for required skills.
+
+### Architectural Changes
+- Integrated enrichment step into the main scraping pipeline in `scraper.py`.
+- Made enrichment fully optional and configurable via `.env` and `config.py`.
+
 ## Version 2.0.0 - Serper API Only (2026-03-09)
 
 ### Major Changes

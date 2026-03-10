@@ -17,11 +17,12 @@ A clean, simple, and fast job scraper using Serper.dev API.
 
 ```
 indeed-job-scraper/
-├── Core Files (5)
-│   ├── scraper.py (6.9K)          # Main scraper
-│   ├── serper_api.py (9.4K)       # API client
-│   ├── deduplicator.py (6.8K)     # Deduplication logic
-│   ├── config.py (1.5K)           # Configuration
+├── Core Files (6)
+│   ├── scraper.py (14K)           # Main scraper & orchestrator
+│   ├── serper_api.py (12K)        # API client & skills detection
+│   ├── tavily_enricher.py (13K)   # AI-powered job enrichment
+│   ├── deduplicator.py (6.9K)     # Deduplication logic
+│   ├── config.py (3.4K)           # Configuration
 │   └── test_api.py (1.5K)         # API test script
 │
 ├── Configuration (3)
@@ -67,10 +68,18 @@ Two-phase deduplication:
 - Phase 2: Fuzzy matching (title + company)
 - Configurable similarity threshold
 
-### 4. Configuration (`config.py`)
+### 4. AI Enricher (`tavily_enricher.py`)
+Optional enrichment layer:
+- Fetches full job content from URLs
+- Researches company culture
+- Identifies learning resources
+- Finds relevant GitHub projects
+
+### 5. Configuration (`config.py`)
 Settings:
-- Search queries (8 default)
-- Deduplication threshold (90%)
+- Search queries & freshness
+- AI Enrichment toggle & limits
+- Deduplication thresholds
 - Output directory paths
 
 ### 5. Test Script (`test_api.py`)

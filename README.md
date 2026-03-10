@@ -5,16 +5,18 @@ A Python-based job scraper that collects job listings from Google for Jobs using
 ## Features
 
 - **API-Based Scraping**: Uses Serper.dev API for reliable data collection
+- **AI Enrichment (Optional)**: Uses Tavily AI to fetch full job descriptions and research companies
 - **No CAPTCHAs**: API-based approach avoids browser detection
 - **Fast Execution**: Collects 100+ jobs in under 30 seconds
 - **Enhanced Deduplication**: Two-phase deduplication (URL + fuzzy title-company matching)
+- **Skills Extraction**: Automatically identifies technical skills in job listings
 - **Export Formats**: JSON and CSV with UTF-8 encoding
-- **Free Tier**: 2,500 searches/month at no cost
 
 ## Requirements
 
 - **Python 3.8+**
 - **Serper API Key**: Get free key from [serper.dev](https://serper.dev/)
+- **Tavily API Key (Optional)**: Required for AI enrichment features [tavily.com](https://tavily.com/)
 - **Internet Connection**: Required for API calls
 
 ## Installation
@@ -32,7 +34,8 @@ Create a `.env` file in the project directory:
 
 ```bash
 # .env
-SERPER_API_KEY=your_api_key_here
+SERPER_API_KEY=your_serper_key_here
+TAVILY_API_KEY=your_tavily_key_here  # Optional: for AI enrichment
 ```
 
 Get your free API key from [serper.dev](https://serper.dev/) (2,500 searches/month free).
@@ -42,6 +45,7 @@ Get your free API key from [serper.dev](https://serper.dev/) (2,500 searches/mon
 ```bash
 python3 -c "import requests; print('✓ Requests installed')"
 python3 -c "from dotenv import load_dotenv; print('✓ python-dotenv installed')"
+python3 -c "import tavily; print('✓ Tavily installed')" # If using enrichment
 ```
 
 ## Usage
@@ -118,6 +122,10 @@ SEARCH_QUERIES = [
     "data scientist Mumbai",
     # Add more queries...
 ]
+
+# AI Enrichment
+ENABLE_ENRICHMENT = True      # Set to False to disable Tavily
+MAX_ENRICHMENT_JOBS = 10      # Max jobs to enrich per run
 ```
 
 ### Location

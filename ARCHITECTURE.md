@@ -28,9 +28,9 @@ scraper.py         ← Orchestrator. Calls all modules. Writes output files.
 
 **`config.py`** — Zero dependencies. Provides `SEARCH_QUERIES`, `FUZZY_SIMILARITY_THRESHOLD`, `OUTPUT_DIR`, `ENABLE_ENRICHMENT`, `MAX_ENRICHMENT_JOBS`. All other modules import from here.
 
-**`serper_api.py`** — `SerperAPI` class. Makes HTTP POST requests to Serper. Tries `/jobs` endpoint first, falls back to `/search`. Normalizes both response shapes into a standard job dict.
+**`serper_api.py`** — `SerperAPI` class. Optimized to use Serper's regular search endpoint with job-specific site operators (LinkedIn, Naukri, etc.) for better reliability. Includes a comprehensive skills detection system for 80+ technical skills.
 
-**`tavily_enricher.py`** — `TavilyEnricher` class (optional). Enriches jobs with full content from URLs. Provides company research, learning resources, GitHub project discovery. Gracefully disabled if API key not configured.
+**`tavily_enricher.py`** — `TavilyEnricher` class (optional). AI layer that enriches jobs with full content from URLs and researches company insights. Gracefully disabled if API key is missing.
 
 **`deduplicator.py`** — `deduplicate_jobs(jobs)` function. Phase 1 removes URL duplicates (fast, O(n)). Phase 2 fuzzy-matches title+company pairs (slower, O(n²) — reduced by Phase 1 first).
 
@@ -49,14 +49,14 @@ scraper.py: main()
   └── FOR EACH query:
         │
         ├── SerperAPI.search_jobs(query, location)
-        │     ├── Try: POST /jobs → _normalize_jobs_endpoint_results()
-        │     └── Fallback: POST /search → _normalize_search_results()
+        │     └── POST /search (site-restricted) → _normalize_search_results()
         │
         └── Append results to all_jobs[]
   │
-  ├── deduplicate_jobs(all_jobs)
-  │     ├── Phase 1: Normalize URLs → remove exact matches
-  │     └── Phase 2: SequenceMatcher on title+company → remove near-duplicates
+  ├── deduplicate_jobs(all_jobs) (URL + Fuzzy)
+  │
+  ├── [OPTIONAL] TavilyEnricher.enrich_jobs_batch(jobs)
+  │     └── Fetch full content and research insights
   │
   ├── Write output/jobs_{timestamp}.json
   └── Write output/jobs_{timestamp}.csv

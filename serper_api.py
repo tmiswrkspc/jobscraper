@@ -182,53 +182,8 @@ class SerperAPI:
             logger.error("Serper API key not configured")
             return []
         
-        # Try jobs endpoint first
-        jobs = self._search_jobs_endpoint(query, location, num_results)
-        if jobs:
-            return jobs
-        
-        # Fallback to regular search
-        logger.info("[Serper] Jobs endpoint returned no results, trying search endpoint")
         return self._search_regular_endpoint(query, location, num_results)
     
-    def _search_jobs_endpoint(
-        self,
-        query: str,
-        location: str,
-        num_results: int
-    ) -> List[Dict]:
-        """
-        Search using dedicated jobs endpoint.
-        """
-        payload = {
-            "q": query,
-            "location": location,
-            "gl": "in",
-            "hl": "en",
-            "num": min(num_results, 100)
-        }
-        
-        try:
-            logger.info(f"[Serper Jobs] Searching: '{query}' in '{location}'")
-            
-            response = requests.post(
-                self.jobs_url,
-                json=payload,
-                headers=self.headers,
-                timeout=30
-            )
-            
-            response.raise_for_status()
-            data = response.json()
-            
-            jobs = self._normalize_jobs_endpoint_results(data)
-            logger.info(f"[Serper Jobs] Found {len(jobs)} jobs")
-            
-            return jobs
-            
-        except Exception as e:
-            logger.warning(f"[Serper Jobs] Request failed: {e}")
-            return []
     
     def _search_regular_endpoint(
         self,
@@ -271,30 +226,6 @@ class SerperAPI:
             logger.error(f"[Serper Search] Request failed: {e}")
             return []
     
-    def _normalize_jobs_endpoint_results(self, data: Dict) -> List[Dict]:
-            """
-            Normalize results from jobs endpoint.
-            """
-            jobs = []
-            job_results = data.get('jobs', [])
-
-            for result in job_results:
-                job = {
-                    'title': result.get('title', ''),
-                    'company': result.get('company', 'Unknown'),
-                    'location': result.get('location', ''),
-                    'link': result.get('link', ''),
-                    'salary': result.get('salary'),
-                    'posted_date': result.get('date'),
-                    'description': result.get('description', ''),
-                    'source': 'serper_jobs_api',
-                    'skills': extract_skills(result.get('description', ''))
-                }
-
-                if job['title'] and job['company'] and job['link']:
-                    jobs.append(job)
-
-            return jobs
     
     def _normalize_search_results(
         self,
@@ -362,16 +293,28 @@ class SerperAPI:
     
     def _extract_company(self, title: str, snippet: str) -> str:
         """Extract company name."""
+        # LinkedIn "Company hiring Role" pattern
+        # e.g. "Microsoft hiring Software Engineering in Bengaluru"
+        # e.g. "IC Pro hiring Software Engineer | Bangalore | 1-2 Years"
+        if 'hiring' in title.lower():
+            hiring_index = title.lower().index('hiring')
+            company_candidate = title[:hiring_index].strip()
+            # Sanity checks — must be non-empty and reasonable length
+            if company_candidate and len(company_candidate.split()) <= 6:
+                return company_candidate
+
         if ' - ' in title:
-            parts = title.split(' - ')
-            if len(parts) >= 2:
-                company = parts[-1]
-                site_names = ['Naukri.com', 'Indeed', 'LinkedIn', 'Glassdoor']
-                for site in site_names:
-                    if site in company:
-                        if len(parts) >= 3:
-                            company = parts[-2]
-                        break
+                parts = title.split(' - ')
+                if len(parts) >= 3 and 'years' in parts[-1].lower():
+                    company = parts[-2].strip()  # grab second-to-last, not last
+                else:
+                    company = parts[-1]
+                    site_names = ['Naukri.com', 'Indeed', 'LinkedIn', 'Glassdoor']
+                    for site in site_names:
+                        if site in company:
+                            if len(parts) >= 3:
+                                company = parts[-2]
+                            break
                 return company.strip()
         
         import re

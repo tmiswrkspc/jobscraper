@@ -4,40 +4,16 @@ __pycache__/
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
 venv/
 env/
 ENV/
-
-# Pytest
 .pytest_cache/
-.coverage
-htmlcov/
 
-# Output files
-output/*.json
-output/*.csv
-!output/.gitkeep
+# Environment
+.env
 
-# Checkpoints
-checkpoints/*.json
-!checkpoints/.gitkeep
+# Output
+output/
 
 # IDE
 .vscode/
@@ -49,14 +25,3 @@ checkpoints/*.json
 # OS
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.bak
-
-# Sensitive data
-config_local.py
-.env
